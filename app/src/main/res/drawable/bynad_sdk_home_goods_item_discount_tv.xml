@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?><!--<shape xmlns:android="http://schemas.android.com/apk/res/android">--><!--&lt;!&ndash;实现应用背景颜色渐变&ndash;&gt;--><!--<gradient--><!--android:startColor="#FF9100"--><!--android:endColor="#FF6600"--><!--android:angle="0"/>--><!--</shape>-->
+
+<!-- 暂时弃用，使用图片。使用本文件效果不如预期-->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <padding
+                android:bottom="0.5dp"
+                android:left="0.5dp"
+                android:right="0.5dp"
+               />
+            <solid android:color="#FDEBF9" />
+            <corners android:radius="4dp" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <padding
+                android:bottom="0.5dp"
+                android:left="0.5dp"
+                android:right="0.5dp"
+               />
+            <solid android:color="#FCE3F6" />
+            <corners android:radius="4dp" />
+        </shape>
+    </item>
+    <!--<item>-->
+        <!--<shape android:shape="rectangle">-->
+            <!--<padding-->
+                <!--android:bottom="0.5dp"-->
+                <!--android:left="0.5dp"-->
+                <!--android:right="0.5dp"-->
+                <!--android:top="0.5dp" />-->
+            <!--<solid android:color="#FADCF3" />-->
+            <!--<corners android:radius="4dp" />-->
+        <!--</shape>-->
+    <!--</item>-->
+    <item>
+        <shape android:shape="rectangle">
+            <padding
+                android:bottom="0.5dp"
+                android:left="0.5dp"
+                android:right="0.5dp"
+               />
+            <solid android:color="#F7C7EC" />
+            <corners android:radius="4dp" />
+        </shape>
+    </item>
+    <!--<item>-->
+        <!--<shape android:shape="rectangle">-->
+            <!--<padding-->
+                <!--android:bottom="0.5dp"-->
+                <!--android:left="0.5dp"-->
+                <!--android:right="0.5dp"-->
+                <!--android:top="0.5dp" />-->
+            <!--<solid android:color="#F5AEE4" />-->
+            <!--<corners android:radius="4dp" />-->
+        <!--</shape>-->
+    <!--</item>-->
+    <item>
+        <shape android:shape="rectangle">
+            <padding
+                android:bottom="0.5dp"
+                android:left="0.5dp"
+                android:right="0.5dp"
+               />
+            <solid android:color="#F3A0DF" />
+            <corners android:radius="4dp" />
+        </shape>
+    </item>
+    <!--<item>-->
+        <!--<shape android:shape="rectangle">-->
+            <!--<padding-->
+                <!--android:bottom="0.5dp"-->
+                <!--android:left="0.5dp"-->
+                <!--android:right="0.5dp"-->
+                <!--android:top="0.5dp" />-->
+            <!--<solid android:color="#F194DB" />-->
+            <!--<corners android:radius="4dp" />-->
+        <!--</shape>-->
+    <!--</item>-->
+    <item>
+        <shape android:shape="rectangle">
+            <padding
+                android:bottom="0.5dp"
+                android:left="0.5dp"
+                android:right="0.5dp"
+                 />
+            <solid android:color="#EF86D6" />
+            <corners android:radius="4dp" />
+        </shape>
+    </item>
+    <!--<item>-->
+        <!--<shape android:shape="rectangle">-->
+            <!--<padding-->
+                <!--android:bottom="0.5dp"-->
+                <!--android:left="0.5dp"-->
+                <!--android:right="0.5dp"-->
+                <!--android:top="0.5dp" />-->
+            <!--<solid android:color="#EE7AD2" />-->
+            <!--<corners android:radius="4dp" />-->
+        <!--</shape>-->
+    <!--</item>-->
+    <item>
+        <shape android:shape="rectangle">
+            <padding
+                android:bottom="0.5dp"
+                android:left="0.5dp"
+                android:right="0.5dp"
+               />
+            <solid android:color="#E142c2" />
+            <corners android:radius="4dp" />
+        </shape>
+    </item>
+    <item>
+        <shape  >
+            <gradient
+                android:endColor="#FF1023"
+                android:startColor="#C41CFF"
+                android:angle="45"
+                android:type="linear"
+                android:useLevel="false"
+                />
+            <corners android:radius="4dp"/>
+
+        </shape>
+    </item>
+</layer-list>

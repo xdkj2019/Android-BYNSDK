@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FA341B"
+
+    tools:context="com.xidian.bynadsdk.activity.BYNAdSDKHomeActivity">
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="235dp"
+                android:background="@mipmap/bynad_sdkhome_top_bg">
+
+                <RelativeLayout
+                    android:id="@+id/activity_bynad_sdkhome_search_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:background="@drawable/bynad_sdk_home_search_bg">
+
+                    <ImageView
+                        android:layout_width="17dp"
+                        android:layout_height="17dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="16dp"
+                        android:src="@mipmap/bynad_sdkhome_top_search_iv" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="39dp"
+                        android:gravity="center"
+                        android:text="搜索领券 下单更便宜"
+                        android:textColor="#AAAAAA" />
+
+                    <TextView
+                        android:id="@+id/activity_bynad_sdkhome_search_button_tv"
+                        android:layout_width="75dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentRight="true"
+                        android:background="@drawable/bynad_sdk_home_search_button_bg"
+                        android:gravity="center"
+                        android:text="搜索"
+                        android:textColor="#ffffff"
+                        android:textSize="16sp" />
+
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/activity_bynad_sdkhome_update_time_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="50dp"
+                    android:text="更新时间：2019年12月12日"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp" />
+
+                <LinearLayout
+                    android:id="@+id/activity_bynad_sdkhome_back_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="26dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="12dp"
+                    android:paddingRight="12dp"
+                    android:paddingTop="10dp">
+
+                    <ImageView
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:src="@mipmap/bynadsdk_back" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="返回"
+                        android:textColor="#ffffff"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.jude.easyrecyclerview.EasyRecyclerView
+                    android:layout_marginBottom="20dp"
+                    android:id="@+id/activity_bynad_sdkhome_recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scrollbars="none"></com.jude.easyrecyclerview.EasyRecyclerView>
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+
+
+
+    <RelativeLayout
+        android:id="@+id/activity_bynad_sdkhome_bottom_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="34dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:background="@mipmap/bynad_sdkhome_bottom_bg">
+
+        <LinearLayout
+            android:id="@+id/bynad_sdk_home_bottom_tutorial_title_bg_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="18dp"
+            android:background="@drawable/bynad_sdk_home_bottom_tutorial_title_bg"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/activity_bynad_sdkhome_bottom_tutorial_title_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="7dp"
+                android:layout_marginLeft="11dp"
+                android:layout_marginTop="7dp"
+                android:text="省钱教程"
+                android:textColor="#DC29A7"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="12dp"
+                android:src="@mipmap/bynad_sdk_home_bottom_tutorial_image" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/bynad_sdk_home_bottom_tutorial_position_one_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="13dp"
+            android:layout_toRightOf="@+id/bynad_sdk_home_bottom_tutorial_title_bg_layout"
+            android:background="@mipmap/bynad_sdk_home_bottom_tutorial_position_bg"
+            android:gravity="center"
+            android:text="1"
+            android:textColor="#893EF2"
+            android:textSize="11sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/bynad_sdk_home_bottom_tutorial_position_one_tv"
+            android:layout_marginLeft="4dp"
+            android:layout_toRightOf="@+id/bynad_sdk_home_bottom_tutorial_position_one_tv"
+            android:gravity="center"
+            android:text="打开淘宝复制商品标题"
+            android:textColor="#FEFF6F"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/bynad_sdk_home_bottom_tutorial_position_two_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/bynad_sdk_home_bottom_tutorial_position_one_tv"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="4dp"
+            android:layout_toRightOf="@+id/bynad_sdk_home_bottom_tutorial_title_bg_layout"
+            android:background="@mipmap/bynad_sdk_home_bottom_tutorial_position_bg"
+            android:gravity="center"
+            android:text="2"
+            android:textColor="#893EF2"
+            android:textSize="11sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/bynad_sdk_home_bottom_tutorial_position_two_tv"
+            android:layout_marginLeft="4dp"
+            android:layout_toRightOf="@+id/bynad_sdk_home_bottom_tutorial_position_two_tv"
+            android:gravity="center"
+            android:text="打开优惠券商城搜券"
+            android:textColor="#FEFF6F"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:id="@+id/activity_bynad_sdkhome_bottom_gone_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="26dp"
+            android:padding="5dp"
+            android:src="@mipmap/bynad_sdk_home_bottom_gone_iv" />
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

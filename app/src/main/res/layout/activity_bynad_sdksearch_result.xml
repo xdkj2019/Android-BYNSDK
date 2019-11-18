@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#f6f6f6"
+    tools:context="com.xidian.bynadsdk.activity.BYNAdSDKSearchResultActivity">
+
+
+    <LinearLayout
+        android:background="#F53C25"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:background="@drawable/bynad_sdk_search_top_layout_bg"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="36dp"
+                android:layout_marginLeft="12dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/activity_bynad_sdksearch_search_result_button_iv"
+                    android:layout_marginLeft="14dp"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@mipmap/bynad_sdk_search_top_iv"
+                    />
+
+                <TextView
+                    android:singleLine="true"
+                    android:id="@+id/activity_bynad_sdksearch_result_search_key_et"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="5dp"
+                    android:layout_marginRight="20dp"
+                    android:gravity="left|center"
+                    android:textColor="#222222"
+                    android:textSize="14sp" />
+
+                <ImageView
+                    android:id="@+id/activity_bynad_sdksearch_result_edittext_clean_iv"
+                    android:src="@mipmap/bynad_sdk_search_edittext_clean"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_marginRight="16dp"/>
+
+
+
+            </LinearLayout>
+
+
+
+            <TextView
+                android:id="@+id/activity_bynad_sdksearch_result_finish_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textColor="@color/white"
+                android:text="取消"
+                android:textSize="14sp"
+                android:gravity="center"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#ffffff"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <LinearLayout
+            android:id="@+id/activity_bynad_sdksearch_result_comprehensive_layout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <TextView
+                android:id="@+id/activity_bynad_sdksearch_result_comprehensive_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#666666"
+                android:textSize="14sp"
+                android:text="综合"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/activity_bynad_sdksearch_result_sales_layout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <TextView
+                android:id="@+id/activity_bynad_sdksearch_result_sales_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#666666"
+                android:textSize="14sp"
+                android:text="销量"/>
+
+            <ImageView
+                android:id="@+id/activity_bynad_sdksearch_result_sales_iv"
+                android:layout_marginLeft="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/bynad_sdk_check"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/activity_bynad_sdksearch_result_price_layout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <TextView
+                android:id="@+id/activity_bynad_sdksearch_result_price_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#666666"
+                android:textSize="14sp"
+                android:text="价格"/>
+
+            <ImageView
+                android:id="@+id/activity_bynad_sdksearch_result_price_iv"
+                android:layout_marginLeft="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/bynad_sdk_check"/>
+        </LinearLayout>
+
+
+
+        <LinearLayout
+
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <CheckBox
+                android:id="@+id/activity_bynad_sdksearch_result_preferential_cb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/CustomCheckboxTheme"
+                />
+
+
+
+            <TextView
+                android:layout_marginLeft="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#666666"
+                android:textSize="14sp"
+                android:text="优惠券"/>
+
+
+        </LinearLayout>
+        <View
+            android:background="#D8D8D8"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"/>
+        <LinearLayout
+            android:id="@+id/activity_bynad_sdksearch_result_screening_layout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/activity_bynad_sdksearch_result_screening_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/bynad_sdk_checked_shaixuan"/>
+
+            <TextView
+                android:id="@+id/activity_bynad_sdksearch_result_screening_tv"
+                android:layout_marginLeft="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#666666"
+                android:textSize="14sp"
+                android:text="筛选"/>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <com.jude.easyrecyclerview.EasyRecyclerView
+            android:id="@+id/activity_bynad_sdksearch_result_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></com.jude.easyrecyclerview.EasyRecyclerView>
+
+        <View
+            android:id="@+id/activity_bynad_sdksearch_result_mask"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#000000"
+            android:visibility="gone"
+            android:alpha="0.6"/>
+    </RelativeLayout>
+
+
+
+
+
+</LinearLayout>

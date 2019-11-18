@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.xidian.bynadsdk.activity.BYNAdSDKWebViewActivity">
+
+    <LinearLayout
+        android:background="#b6b6b6"
+        android:fitsSystemWindows="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#b6b6b6"
+            android:orientation="horizontal"
+            >
+            <LinearLayout
+                android:id="@+id/byn_web_go_back"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:padding="10dp"
+                >
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@mipmap/bynad_sdk_gray_back_white" />
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/byn_web_finish"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:padding="10dp"
+                >
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:src="@mipmap/bynad_sdk_out_finish" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/byn_web_text_title"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textSize="14sp"
+                android:textColor="#7f7f7f"
+                android:layout_marginLeft="40dp"
+                android:maxLines="1"
+                android:ellipsize="end"
+                />
+
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/byn_web_webview_progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:progressDrawable="@drawable/bynad_sdk_pg"
+        android:visibility="gone"
+
+        />
+
+    <WebView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/byn_web_webview"></WebView>
+</LinearLayout>

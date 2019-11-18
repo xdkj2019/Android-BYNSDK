@@ -1,0 +1,109 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
+group = 'com.github.xdkj2019'
+
+
+android {
+    compileSdkVersion 27
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+//        release {
+//            //在AAR中独立配置混淆文件的方法
+//            consumerProguardFiles 'proguard-rules.pro'
+//
+//        }
+//        debug {
+//            //在AAR中独立配置混淆文件的方法
+//            consumerProguardFiles 'proguard-rules.pro'
+//        }
+        release {
+            // 不显示Log
+          //  buildConfigField "boolean", "LOG_DEBUG", "false"
+            //混淆
+            minifyEnabled true
+//            //Zipalign优化
+//            zipAlignEnabled true
+//            // 移除无用的resource文件
+//            shrinkResources true
+//            //加载默认混淆配置文件
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            //签名
+          //  signingConfig signingConfigs.release
+        }
+        debug {
+
+            // 显示Log
+         //   buildConfigField "boolean", "LOG_DEBUG", "true"
+            //混淆
+            minifyEnabled true
+            //Zipalign优化
+          //  zipAlignEnabled true
+            // 移除无用的resource文件
+          //  shrinkResources true
+            //加载默认混淆配置文件
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+          //  signingConfig signingConfigs.debug
+        }
+    }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.0'
+    // 必要rxjava2依赖
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    // 必要rxandrroid依赖，切线程时需要用到
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    // 必要retrofit依赖
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    // 必要依赖，和Rxjava结合必须用到，下面会提到
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+    // 必要依赖，解析json字符所用
+   // implementation 'com.squareup.okhttp3:logging-interceptor:3.8.1'
+    //非必要依赖， log依赖，如果需要打印OkHttpLog需要添加
+   // implementation 'com.android.support:support-v4:27.1.1'
+    implementation 'com.github.bumptech.glide:glide:3.7.0'
+    //支付宝（可选）
+    implementation 'com.alipay.android.app.cashier:standardcashier-single:15.6.5@aar'
+    compileOnly 'com.alipay.mobile.android.securitysdk:apsecuritysdk-all:3.3.0'
+    //登陆
+    implementation 'com.ali.auth.sdk:alibabauth_core:2.0.0.6@aar'
+    implementation 'com.ali.auth.sdk:alibabauth_ui:2.0.0.6@aar'
+    implementation 'com.ali.auth.sdk:alibabauth_ext:2.0.0.6@aar'
+    //安全组件
+    implementation 'com.taobao.android:securityguardaar3:5.4.171@aar'
+    implementation 'com.taobao.android:securitybodyaar3:5.4.99@aar'
+    implementation 'com.taobao.android:avmpaar3:5.4.36@aar'
+    implementation 'com.taobao.android:sgmiddletieraar3:5.4.9@aar'
+    //Mtop
+    implementation 'com.taobao.android:mtopsdk_allinone_open:3.1.2.5@jar'
+    //applink
+    implementation 'com.alibaba.sdk.android:alibc_link_partner:4.1.11@aar'
+    //ut
+    implementation 'com.taobao.android:utdid4all:1.1.5.3_proguard'
+    implementation 'com.alibaba.mtl:app-monitor-sdk:2.6.4.5_for_bc'
+    // 电商基础组件
+    implementation 'com.alibaba.sdk.android:AlibcTradeCommon:4.0.0.2@aar'
+    implementation 'com.alibaba.sdk.android:AlibcTradeBiz:4.0.0.2@aar'
+    implementation 'com.alibaba.sdk.android:nb_trade:4.0.0.2@aar'
+    implementation 'com.alibaba:fastjson:1.2.41'
+    implementation 'me.jessyan:autosize:1.1.2'
+    implementation 'com.jude:easyrecyclerview:4.4.2'
+    implementation 'com.android.support:recyclerview-v7:27.1.1'
+    implementation 'com.github.kingideayou:tagcloudview:1.0.2'
+}

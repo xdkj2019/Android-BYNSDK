@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="5dp">
+    <ImageView
+        android:id="@+id/bynad_sdk_simargoods_item_image"
+        android:layout_width="115dp"
+        android:layout_height="115dp"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/bynad_sdk_ic_launcher" />
+    <TextView
+        android:id="@+id/bynad_sdk_simargoods_item_discount_tv"
+        android:text="8.8折"
+        android:background="@drawable/bynad_sdksearch_result_goods_item_discount"
+        android:layout_width="51dp"
+        android:layout_height="27dp"
+        android:textSize="13sp"
+        android:gravity="center"
+        android:textColor="#ffffff"
+        android:paddingBottom="4.5dp"
+        android:layout_alignLeft="@+id/bynad_sdk_simargoods_item_image"
+        />
+
+
+    <TextView
+        android:id="@+id/bynad_sdk_simargoods_item_title"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:textSize="14sp"
+        android:textColor="#333333"
+        android:text="大姐夫辣豆腐卡阿里的减肥啦大豆腐"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxWidth="115dp"
+        android:layout_below="@+id/bynad_sdk_simargoods_item_image"/>
+    <LinearLayout
+        android:background="@drawable/bynad_sdkhome_goods_item_vouchers_layout"
+        android:id="@+id/bynad_sdk_simargoods_item_vouchers_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="16dp"
+        android:gravity="center"
+        android:layout_below="@+id/bynad_sdk_simargoods_item_title"
+        android:layout_marginTop="6dp"
+        android:orientation="horizontal">
+        <TextView
+            android:background="@drawable/bynad_sdkhome_goods_item_vouchers_title"
+            android:layout_width="17dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="券"
+            android:textSize="11sp"
+            android:textColor="#FFFFFF"
+            />
+        <TextView
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
+            android:id="@+id/bynad_sdk_simargoods_item_vouchers_textview"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="40元"
+            android:textColor="#FA341B"
+            android:textSize="11sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/bynad_sdksearch_result_goods_item_coupon_after_price_layout"
+        android:layout_below="@+id/bynad_sdk_simargoods_item_vouchers_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="券后"
+            android:textSize="12sp"
+            android:textColor="#FA341B"
+            />
+        <TextView
+            android:layout_marginTop="1dp"
+            android:layout_marginLeft="2dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="¥"
+            android:textSize="11sp"
+            android:textColor="#FA341B"
+            />
+        <TextView
+            android:id="@+id/bynad_sdk_simargoods_item_coupon_after_price_tv"
+            android:layout_marginLeft="2dp"
+            android:padding="-1dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="299"
+            android:textSize="18sp"
+            android:textColor="#FA341B"
+            />
+    </LinearLayout>
+
+
+
+
+
+
+</RelativeLayout>

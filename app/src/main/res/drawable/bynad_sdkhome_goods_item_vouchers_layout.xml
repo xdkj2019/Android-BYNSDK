@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?><!--<shape xmlns:android="http://schemas.android.com/apk/res/android">--><!--&lt;!&ndash;实现应用背景颜色渐变&ndash;&gt;--><!--<gradient--><!--android:startColor="#FF9100"--><!--android:endColor="#FF6600"--><!--android:angle="0"/>--><!--</shape>-->
+
+
+<!--<shape xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--android:shape="rectangle">-->
+<!--<gradient-->
+<!--android:angle="-90"-->
+<!--android:endColor="#ffff80d1"-->
+<!--android:startColor="#fff24b74"-->
+<!--android:type="linear"-->
+<!--android:useLevel="true" />-->
+<!--<corners-->
+<!--android:bottomLeftRadius="5dp"-->
+<!--android:bottomRightRadius="5dp"-->
+<!--android:topLeftRadius="0dp"-->
+<!--android:topRightRadius="0dp" />-->
+<!--</shape>-->
+
+
+<!--<shape android:shape="rectangle" xmlns:android="http://schemas.android.com/apk/res/android">-->
+<!--<gradient android:type="linear" android:useLevel="true" android:startColor="#fff24b74" android:endColor="#ffff80d1" android:angle="-90" />-->
+<!--<corners android:topLeftRadius="0dp" android:topRightRadius="0dp" android:bottomLeftRadius="5dp" android:bottomRightRadius="5dp" />-->
+<!--</shape>-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android" >
+    <solid android:color="#FFE7E4" />
+    <corners android:radius="1dp"/>
+    <stroke android:width="0.5dp" android:color="#FA341B"/>
+
+</shape>

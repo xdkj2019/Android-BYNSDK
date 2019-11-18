@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bynad_sdk_home_goods_item_bg"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/bynad_sdkhome_goods_item_image"
+            android:layout_width="124dp"
+            android:layout_height="124dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/bynad_sdk_ic_launcher" />
+
+        <ImageView
+            android:id="@+id/bynad_sdkhome_goods_item_source_icon_image"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="2dp"
+            android:layout_toRightOf="@+id/bynad_sdkhome_goods_item_image"
+            android:src="@mipmap/bynad_sdk_ic_launcher" />
+
+        <TextView
+            android:id="@+id/bynad_sdkhome_goods_item_title_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:layout_toRightOf="@+id/bynad_sdkhome_goods_item_source_icon_image"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="柏蕊诗鱼子酱雾缎唇膏好用实惠又便宜"
+            android:textColor="#222222"
+            android:textSize="15sp" />
+
+
+        <TextView
+            android:id="@+id/bynad_sdkhome_goods_item_shop_name_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/bynad_sdkhome_goods_item_source_icon_image"
+            android:layout_below="@+id/bynad_sdkhome_goods_item_source_icon_image"
+
+            android:layout_marginTop="2.5dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="官方旗舰店"
+            android:textColor="#999999"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/bynad_sdkhome_goods_item_describe_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/bynad_sdkhome_goods_item_source_icon_image"
+            android:layout_below="@+id/bynad_sdkhome_goods_item_shop_name_textview"
+            android:layout_marginTop="2dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="斩男色 | 复古色号"
+            android:textColor="#B39868"
+            android:textSize="12sp" />
+
+        <LinearLayout
+            android:background="@drawable/bynad_sdkhome_goods_item_vouchers_layout"
+            android:id="@+id/bynad_sdkhome_goods_item_vouchers_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="16dp"
+            android:gravity="center"
+            android:layout_alignLeft="@+id/bynad_sdkhome_goods_item_source_icon_image"
+            android:layout_below="@+id/bynad_sdkhome_goods_item_describe_textview"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+            <TextView
+                android:background="@drawable/bynad_sdkhome_goods_item_vouchers_title"
+                android:layout_width="17dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="券"
+                android:textSize="11sp"
+                android:textColor="#FFFFFF"
+                />
+            <TextView
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+                android:id="@+id/bynad_sdkhome_goods_item_vouchers_textview"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="40元"
+                android:textColor="#FA341B"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/bynad_sdkhome_goods_item_coupon_after_price_layout"
+            android:layout_alignLeft="@+id/bynad_sdkhome_goods_item_source_icon_image"
+            android:layout_below="@+id/bynad_sdkhome_goods_item_vouchers_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="券后"
+                android:textSize="12sp"
+                android:textColor="#FA341B"
+                />
+            <TextView
+                android:layout_marginTop="1dp"
+                android:layout_marginLeft="2dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="¥"
+                android:textSize="11sp"
+                android:textColor="#FA341B"
+                />
+            <TextView
+                android:id="@+id/bynad_sdkhome_goods_item_coupon_after_price_tv"
+                android:layout_marginLeft="2dp"
+                android:padding="-1dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="299"
+                android:textSize="18sp"
+                android:textColor="#FA341B"
+                />
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_marginTop="1dp"
+            android:textColor="#999999"
+            android:textSize="12sp"
+            android:text="¥149"
+            android:layout_alignLeft="@+id/bynad_sdkhome_goods_item_source_icon_image"
+            android:layout_below="@+id/bynad_sdkhome_goods_item_coupon_after_price_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/bynad_sdkhome_goods_item_original_price_tv"/>
+
+        <TextView
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="4dp"
+            android:paddingLeft="13dp"
+            android:paddingRight="13dp"
+            android:paddingTop="7dp"
+            android:paddingBottom="7dp"
+            android:background="@drawable/bynad_sdk_home_goods_item_discount_tv"
+            android:layout_alignBottom="@+id/bynad_sdkhome_goods_item_image"
+            android:textSize="16sp"
+            android:text="8.9折抢"
+            android:textColor="#FFFFFF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/bynad_sdkhome_goods_item_discount_tv"/>
+
+
+        <TextView
+            android:id="@+id/bynad_sdkhome_goods_item_sales_tv"
+            android:text="已售1120件"
+            android:background="@drawable/bynad_sdk_home_goods_item_sales"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="11sp"
+            android:textColor="#ffffff"
+            android:paddingTop="2.5dp"
+            android:paddingBottom="2.5dp"
+            android:paddingLeft="4.5dp"
+            android:paddingRight="4.5dp"
+            android:layout_alignBottom="@+id/bynad_sdkhome_goods_item_image"
+            android:layout_alignLeft="@+id/bynad_sdkhome_goods_item_image"
+            />
+
+
+    </RelativeLayout>
+
+
+
+    <ImageView
+        android:layout_marginLeft="20dp"
+        android:layout_width="35dp"
+        android:layout_height="36dp"
+        android:id="@+id/bynad_sdkhome_goods_item_position_iv"/>
+
+
+
+
+
+</RelativeLayout>
