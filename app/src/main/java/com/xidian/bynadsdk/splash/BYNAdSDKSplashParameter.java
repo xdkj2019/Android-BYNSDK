@@ -4,7 +4,7 @@ package com.xidian.bynadsdk.splash;
  * Created by Administrator on 2019/10/21.
  */
 
-public class SplashParameter {
+public class BYNAdSDKSplashParameter {
     private int height;
     private long timeMillis;
     private boolean isShowSkip;
@@ -41,7 +41,7 @@ public class SplashParameter {
         return isShowSkip;
     }
 
-    private SplashParameter() {
+    private BYNAdSDKSplashParameter() {
     }
     public static class Builder{
         private int height;
@@ -53,36 +53,36 @@ public class SplashParameter {
         private String device_type;
         public Builder() {
         }
-        public SplashParameter.Builder setAdzoneId(int adzone_id) {
+        public BYNAdSDKSplashParameter.Builder setAdzoneId(int adzone_id) {
             this.adzone_id = adzone_id;
             return this;
         }
-        public SplashParameter.Builder setDeviceValue(String device_value) {
+        public BYNAdSDKSplashParameter.Builder setDeviceValue(String device_value) {
             this.device_value = device_value;
             return this;
         }
-        public SplashParameter.Builder setDeviceType(String device_type) {
+        public BYNAdSDKSplashParameter.Builder setDeviceType(String device_type) {
             this.device_type = device_type;
             return this;
         }
 
-        public SplashParameter.Builder setSize(int width, int height) {
+        public BYNAdSDKSplashParameter.Builder setSize(int width, int height) {
             this.width=width;
             this.height = height;
             return this;
         }
 
-        public SplashParameter.Builder setTimeMillis(long timeMillis) {
+        public BYNAdSDKSplashParameter.Builder setTimeMillis(long timeMillis) {
             this.timeMillis = timeMillis;
             return this;
         }
 
-        public SplashParameter.Builder setShowSkip(boolean showSkip) {
+        public BYNAdSDKSplashParameter.Builder setShowSkip(boolean showSkip) {
             isShowSkip = showSkip;
             return this;
         }
-        public SplashParameter build(){
-            SplashParameter splashParameter = new SplashParameter();
+        public BYNAdSDKSplashParameter build(){
+            BYNAdSDKSplashParameter splashParameter = new BYNAdSDKSplashParameter();
             splashParameter.height=this.height;
             splashParameter.width=this.width;
             splashParameter.device_type=this.device_type;

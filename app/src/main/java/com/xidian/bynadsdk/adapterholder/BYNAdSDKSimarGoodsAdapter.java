@@ -10,14 +10,14 @@ import android.widget.TextView;
 import com.jude.easyrecyclerview.adapter.BaseViewHolder;
 import com.xidian.bynadsdk.R;
 import com.xidian.bynadsdk.utils.Utils;
-import com.xidian.bynadsdk.bean.GoodsDetailBean;
+import com.xidian.bynadsdk.bean.BYNAdSDKGoodsDetailBean;
 
 
 /**
  * Created by Administrator on 2019/11/11.
  */
 
-public class BYNAdSDKSimarGoodsAdapter extends BaseViewHolder<GoodsDetailBean> {
+public class BYNAdSDKSimarGoodsAdapter extends BaseViewHolder<BYNAdSDKGoodsDetailBean> {
     private ImageView goodsImage;
     private TextView titleTv,vouchersTv,couponAterPriceTv,discountTv;
     private LinearLayout vouchersLL;
@@ -32,7 +32,7 @@ public class BYNAdSDKSimarGoodsAdapter extends BaseViewHolder<GoodsDetailBean> {
     }
 
     @Override
-    public void setData(GoodsDetailBean data) {
+    public void setData(BYNAdSDKGoodsDetailBean data) {
         super.setData(data);
         // TODO: 2019/11/10 折扣字段
 

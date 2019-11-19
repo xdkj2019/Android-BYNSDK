@@ -6,7 +6,7 @@ import java.util.List;
  * Created by Administrator on 2019/11/10.
  */
 
-public class GoodsSingleDetailBean {
+public class BYNAdSDKGoodsSingleDetailBean {
     /**
      * item_id : 3641879797
      * title : 简诺正宗土鸡蛋农家散养新鲜30枚天然纯农村柴鸡蛋草鸡蛋

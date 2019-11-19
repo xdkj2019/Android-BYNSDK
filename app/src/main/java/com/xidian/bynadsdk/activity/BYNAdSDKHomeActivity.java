@@ -20,8 +20,8 @@ import com.xidian.bynadsdk.utils.MyLinearLayoutManager;
 import com.xidian.bynadsdk.utils.StatusBarUtil;
 import com.xidian.bynadsdk.utils.Utils;
 import com.xidian.bynadsdk.adapterholder.BYNAdSDKHomeGoodsAdapter;
-import com.xidian.bynadsdk.bean.GoodsDetailBean;
-import com.xidian.bynadsdk.bean.GoodsTopBean;
+import com.xidian.bynadsdk.bean.BYNAdSDKGoodsDetailBean;
+import com.xidian.bynadsdk.bean.BYNAdSDKGoodsTopBean;
 import com.xidian.bynadsdk.network.NetWorkManager;
 import com.xidian.bynadsdk.network.response.ResponseTransformer;
 import com.xidian.bynadsdk.network.schedulers.SchedulerProvider;
@@ -42,6 +42,8 @@ public class BYNAdSDKHomeActivity extends BYNBaseActivity {
     private RelativeLayout bottomLayout;
     private ImageView goneIv;
     private TextView tutoialTv;
+    private View footView;
+    private TextView getMoreTv;
     public RecyclerArrayAdapter goodsAdapter = new RecyclerArrayAdapter(this) {
         @Override
         public BaseViewHolder OnCreateViewHolder(ViewGroup parent, int viewType) {
@@ -52,6 +54,7 @@ public class BYNAdSDKHomeActivity extends BYNBaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bynad_sdkhome);
+        footView = View.inflate(this,R.layout.bynad_sdk_home_foot_view,null);
         StatusBarUtil.setStatusBarFullTransparent(this);
         initView();
         initData();
@@ -68,31 +71,43 @@ public class BYNAdSDKHomeActivity extends BYNBaseActivity {
         goneIv = (ImageView)findViewById(R.id.activity_bynad_sdkhome_bottom_gone_iv);
         tutoialTv = (TextView)findViewById(R.id.activity_bynad_sdkhome_bottom_tutorial_title_tv);
         searchTv = (TextView)findViewById(R.id.activity_bynad_sdkhome_search_button_tv);
+        getMoreTv = (TextView)footView.findViewById(R.id.bynad_sdk_home_foot_get_more_text);
         tutoialTv.getPaint().setFakeBoldText(true);
         searchTv.getPaint().setFakeBoldText(true);
+        getMoreTv.getPaint().setFakeBoldText(true);
     }
     private void initData(){
         goodsListRecycler.setAdapter(goodsAdapter);
         MyLinearLayoutManager linearLayoutManager = new MyLinearLayoutManager(this);
         goodsListRecycler.setLayoutManager(linearLayoutManager);
         goodsAdapter.setNotifyOnChange(false);
+        goodsAdapter.addFooter(new RecyclerArrayAdapter.ItemView() {
+            @Override
+            public View onCreateView(ViewGroup parent) {
+                return footView;
+            }
 
+            @Override
+            public void onBindView(View headerView) {
+
+            }
+        });
 
 
         long l = System.currentTimeMillis() / 1000;
         CompositeDisposable mDisposable = new CompositeDisposable();
         HashMap<String, Object> hashMap = new HashMap<>();
         hashMap.put("t", l+"");
-        hashMap.put("sign", Utils.md5Decode32(Utils.getVersion()+ BYNAdSDK.getInstance().appSecret+l+BYNAdSDK.getInstance().appSecret));
+        hashMap.put("sign", Utils.md5Decode32( BYNAdSDK.getInstance().appSecret+"appkey="+BYNAdSDK.getInstance().appKey+"tm="+l+BYNAdSDK.getInstance().appSecret));
         HashMap<String, Object> map = new HashMap<String, Object>();
         map.put("page","1");
         map.put("page_size","20");
         Disposable subscribe = NetWorkManager.getRequest().goodstop(hashMap, map)
                 .compose(ResponseTransformer.handleResult())
                 .compose(SchedulerProvider.getInstance().applySchedulers())
-                .subscribe(new Consumer<GoodsTopBean>() {
+                .subscribe(new Consumer<BYNAdSDKGoodsTopBean>() {
                     @Override
-                    public void accept(GoodsTopBean goodsTopBean) throws Exception {
+                    public void accept(BYNAdSDKGoodsTopBean goodsTopBean) throws Exception {
                         goodsAdapter.addAll(goodsTopBean.getItems());
                         goodsAdapter.notifyDataSetChanged();
                         updateTimeTv.setText("更新时间："+goodsTopBean.getTop_update_time());
@@ -100,7 +115,7 @@ public class BYNAdSDKHomeActivity extends BYNBaseActivity {
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
-                        Utils.toast(throwable.getMessage());
+
                     }
                 });
         mDisposable.add(subscribe);
@@ -131,10 +146,10 @@ public class BYNAdSDKHomeActivity extends BYNBaseActivity {
         goodsAdapter.setOnItemClickListener(new RecyclerArrayAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                GoodsDetailBean goodsDetailBean= (GoodsDetailBean) goodsAdapter.getItem(position);
+                BYNAdSDKGoodsDetailBean bynAdSDKGoodsDetailBean = (BYNAdSDKGoodsDetailBean) goodsAdapter.getItem(position);
                 startActivity(new Intent(BYNAdSDKHomeActivity.this,BYNAdSDKProductActivity.class)
-                        .putExtra("item_id",goodsDetailBean.getItem_id())
-                        .putExtra("activity_id",goodsDetailBean.getActivity_id()));            }
+                        .putExtra("item_id", bynAdSDKGoodsDetailBean.getItem_id())
+                        .putExtra("activity_id", bynAdSDKGoodsDetailBean.getActivity_id()));            }
         });
     }
 }

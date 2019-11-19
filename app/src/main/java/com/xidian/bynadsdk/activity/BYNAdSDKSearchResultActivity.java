@@ -29,8 +29,8 @@ import com.xidian.bynadsdk.utils.PullListener;
 import com.xidian.bynadsdk.utils.StatusBarUtil;
 import com.xidian.bynadsdk.utils.Utils;
 import com.xidian.bynadsdk.adapterholder.BYNAdSDKSearchResultGoodsAdapter;
-import com.xidian.bynadsdk.bean.GoodsDetailBean;
-import com.xidian.bynadsdk.bean.GoodsTopBean;
+import com.xidian.bynadsdk.bean.BYNAdSDKGoodsDetailBean;
+import com.xidian.bynadsdk.bean.BYNAdSDKGoodsTopBean;
 import com.xidian.bynadsdk.network.NetWorkManager;
 import com.xidian.bynadsdk.network.response.ResponseTransformer;
 import com.xidian.bynadsdk.network.schedulers.SchedulerProvider;
@@ -93,10 +93,10 @@ public class BYNAdSDKSearchResultActivity extends BYNBaseActivity implements Vie
         }, new RecyclerArrayAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                GoodsDetailBean goodsDetailBean= (GoodsDetailBean) goodsAdapter.getItem(position);
+                BYNAdSDKGoodsDetailBean bynAdSDKGoodsDetailBean = (BYNAdSDKGoodsDetailBean) goodsAdapter.getItem(position);
                 startActivity(new Intent(BYNAdSDKSearchResultActivity.this,BYNAdSDKProductActivity.class)
-                        .putExtra("item_id",goodsDetailBean.getItem_id())
-                        .putExtra("activity_id",goodsDetailBean.getActivity_id()));            }
+                        .putExtra("item_id", bynAdSDKGoodsDetailBean.getItem_id())
+                        .putExtra("activity_id", bynAdSDKGoodsDetailBean.getActivity_id()));            }
         });
 
 
@@ -109,7 +109,7 @@ public class BYNAdSDKSearchResultActivity extends BYNBaseActivity implements Vie
         CompositeDisposable mDisposable = new CompositeDisposable();
         HashMap<String, Object> hashMap = new HashMap<>();
         hashMap.put("t", l + "");
-        hashMap.put("sign", Utils.md5Decode32(Utils.getVersion() + BYNAdSDK.getInstance().appSecret + l + BYNAdSDK.getInstance().appSecret));
+        hashMap.put("sign", Utils.md5Decode32( BYNAdSDK.getInstance().appSecret+"appkey="+BYNAdSDK.getInstance().appKey+"tm="+l+BYNAdSDK.getInstance().appSecret));
         HashMap<String, Object> map = new HashMap<String, Object>();
         map.put("page", num);
         map.put("page_size", "20");
@@ -127,9 +127,9 @@ public class BYNAdSDKSearchResultActivity extends BYNBaseActivity implements Vie
         Disposable subscribe = NetWorkManager.getRequest().goodssearch(hashMap, map)
                 .compose(ResponseTransformer.handleResult())
                 .compose(SchedulerProvider.getInstance().applySchedulers())
-                .subscribe(new Consumer<GoodsTopBean>() {
+                .subscribe(new Consumer<BYNAdSDKGoodsTopBean>() {
                     @Override
-                    public void accept(GoodsTopBean goodsTopBean) throws Exception {
+                    public void accept(BYNAdSDKGoodsTopBean goodsTopBean) throws Exception {
                         if (num == 1) {
                             if (goodsAdapter != null) {
                                 goodsAdapter.clear();
@@ -149,7 +149,6 @@ public class BYNAdSDKSearchResultActivity extends BYNBaseActivity implements Vie
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
-                        Utils.toast(throwable.getMessage());
                     }
                 });
         mDisposable.add(subscribe);

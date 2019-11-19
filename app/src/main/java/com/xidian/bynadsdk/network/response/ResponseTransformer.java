@@ -1,10 +1,12 @@
 package com.xidian.bynadsdk.network.response;
 
 
+import android.os.Looper;
 import android.util.Log;
 
 import com.xidian.bynadsdk.network.Exception.ApiException;
 import com.xidian.bynadsdk.network.Exception.CustomException;
+import com.xidian.bynadsdk.utils.Utils;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
@@ -52,8 +54,19 @@ public class ResponseTransformer {
             String message = tResponse.getMessage();
             if (code == 0) {
                 return Observable.just(tResponse.getData());
-            } else {
-                Log.d("BYNAdSDK",message);
+            }else if(code==20209){
+                return Observable.error(new ApiException(20001, message));
+            }else if(code==20215){
+                return Observable.error(new ApiException(20004, message));
+            }else if(code==20216){
+                return Observable.error(new ApiException(20002, message));
+            }
+            else {
+                Log.e("BYNSDKNetError","错误码:"+code+"；错误信息："+message);
+                Looper.prepare();
+                Utils.toast("错误信息："+message);
+                Looper.loop();
+
                 return Observable.error(new ApiException(code, message));
             }
         }

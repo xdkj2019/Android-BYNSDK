@@ -4,21 +4,23 @@ package com.xidian.bynadsdk.bean;
  * Created by Administrator on 2019/10/29.
  */
 
-public class ADSBean {
+public class BYNAdSDKADSBean {
 
     /**
-     * title : 标题标题标题
-     * image : {"url":"http://img.haodanku.com/0_602041258520_1567594515.jpg","width":"720","height":"1080"}
-     * url : https://s.click.taobao.com/Iysod1w
-     * deep_link :
+     * title : ad_name
+     * image : {"url":"http://img.daff9.cn/biyingniao/images/other/1911/5dd236e31ca31.png","width":"960","height":"1600"}
+     * url :
+     * deeplink :
      * jump_type : 1
+     * item_info : {"item_id":"","activity_id":""}
      */
 
     private String title;
     private ImageBean image;
     private String url;
-    private String deep_link;
+    private String deeplink;
     private int jump_type;
+    private ItemInfoBean item_info;
 
     public String getTitle() {
         return title;
@@ -44,12 +46,12 @@ public class ADSBean {
         this.url = url;
     }
 
-    public String getDeep_link() {
-        return deep_link;
+    public String getDeeplink() {
+        return deeplink;
     }
 
-    public void setDeep_link(String deep_link) {
-        this.deep_link = deep_link;
+    public void setDeeplink(String deeplink) {
+        this.deeplink = deeplink;
     }
 
     public int getJump_type() {
@@ -60,11 +62,19 @@ public class ADSBean {
         this.jump_type = jump_type;
     }
 
+    public ItemInfoBean getItem_info() {
+        return item_info;
+    }
+
+    public void setItem_info(ItemInfoBean item_info) {
+        this.item_info = item_info;
+    }
+
     public static class ImageBean {
         /**
-         * url : http://img.haodanku.com/0_602041258520_1567594515.jpg
-         * width : 720
-         * height : 1080
+         * url : http://img.daff9.cn/biyingniao/images/other/1911/5dd236e31ca31.png
+         * width : 960
+         * height : 1600
          */
 
         private String url;
@@ -95,4 +105,31 @@ public class ADSBean {
             this.height = height;
         }
     }
+
+    public static class ItemInfoBean {
+        /**
+         * item_id :
+         * activity_id :
+         */
+
+        private String item_id;
+        private String activity_id;
+
+        public String getItem_id() {
+            return item_id;
+        }
+
+        public void setItem_id(String item_id) {
+            this.item_id = item_id;
+        }
+
+        public String getActivity_id() {
+            return activity_id;
+        }
+
+        public void setActivity_id(String activity_id) {
+            this.activity_id = activity_id;
+        }
+    }
+
 }

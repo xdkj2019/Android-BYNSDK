@@ -1,6 +1,6 @@
 package com.xidian.bynadsdk;
 
-import com.xidian.bynadsdk.presenter.SplashPresenter;
+import com.xidian.bynadsdk.presenter.BYNAdSDKSplashPresenter;
 
 /**
  * Created by Administrator on 2019/10/28.
@@ -9,7 +9,7 @@ import com.xidian.bynadsdk.presenter.SplashPresenter;
 public class BYNAdManager {
     public static BYNAdNative getBYNAdNative(BYNAdTypeEnum bynAdTypeEnum){
         if(bynAdTypeEnum== BYNAdTypeEnum.SPLASH){
-            SplashPresenter splashPresenter = new SplashPresenter();
+            BYNAdSDKSplashPresenter splashPresenter = new BYNAdSDKSplashPresenter();
             return splashPresenter;
         }
        return null;

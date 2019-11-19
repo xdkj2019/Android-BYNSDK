@@ -11,14 +11,14 @@ import android.widget.TextView;
 import com.jude.easyrecyclerview.adapter.BaseViewHolder;
 import com.xidian.bynadsdk.R;
 import com.xidian.bynadsdk.utils.Utils;
-import com.xidian.bynadsdk.bean.GoodsDetailBean;
+import com.xidian.bynadsdk.bean.BYNAdSDKGoodsDetailBean;
 
 
 /**
  * Created by Administrator on 2019/11/6.
  */
 
-public class BYNAdSDKHomeGoodsAdapter extends BaseViewHolder<GoodsDetailBean> {
+public class BYNAdSDKHomeGoodsAdapter extends BaseViewHolder<BYNAdSDKGoodsDetailBean> {
     private ImageView positonIv;
     private ImageView image;
     private ImageView iconIv;
@@ -53,7 +53,7 @@ public class BYNAdSDKHomeGoodsAdapter extends BaseViewHolder<GoodsDetailBean> {
     }
 
     @Override
-    public void setData(GoodsDetailBean data) {
+    public void setData(BYNAdSDKGoodsDetailBean data) {
         super.setData(data);
         originalPriceTv.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
         if(getLayoutPosition()==0){
@@ -78,13 +78,20 @@ public class BYNAdSDKHomeGoodsAdapter extends BaseViewHolder<GoodsDetailBean> {
         titleTv.setText(data.getTitle());
         shopNameTv.setText(data.getShop_name());
         describeTv.setText(data.getTag());
-        if(!TextUtils.isEmpty(data.getDiscount_text())){
+        int goods_status = data.getGoods_status();
+        if(goods_status==1){
             discountTv.setVisibility(View.VISIBLE);
+            discountTv.setBackground(getContext().getDrawable(R.drawable.bynad_sdk_home_goods_item_discount_tv));
             discountTv.setText(data.getDiscount_text());
-        }else{
-            discountTv.setVisibility(View.GONE);
+        }else if(goods_status==2){
+            discountTv.setVisibility(View.VISIBLE);
+            discountTv.setBackground(getContext().getDrawable(R.drawable.bynad_sdk_home_goods_item_discount_tv));
+            discountTv.setText("原价购");
+        }else if(goods_status==3){
+            discountTv.setVisibility(View.VISIBLE);
+            discountTv.setBackground(getContext().getDrawable(R.drawable.bynad_sdk_home_goods_status));
+            discountTv.setText("售罄");
         }
-
 
         if(!TextUtils.isEmpty(data.getCoupon_money())&&Double.valueOf(data.getCoupon_money())>0){
             vouchersLL.setVisibility(View.VISIBLE);

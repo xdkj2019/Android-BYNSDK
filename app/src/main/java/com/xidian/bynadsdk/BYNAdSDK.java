@@ -3,6 +3,7 @@ package com.xidian.bynadsdk;
 import android.app.Application;
 import android.content.Context;
 import android.os.Binder;
+import android.text.TextUtils;
 
 import com.alibaba.baichuan.android.trade.AlibcTradeSDK;
 import com.alibaba.baichuan.android.trade.callback.AlibcTradeInitCallback;
@@ -28,20 +29,47 @@ public class BYNAdSDK {
     }
     /**
      * 初始化项目
-     * @param appKey    开放平台申请的key
+     *
+     * @param appKey 开放平台申请的key
      * @return
      */
-    public void init(Application context,String appKey,String appSecret, AlibcTradeInitCallback alibcTradeInitCallback){
-        this.appKey=appKey;
-        this.appSecret = appSecret;
-        this.context=context;
-        pkg = Utils.getAppPkg(Binder.getCallingPid(), context);
+    public void init(Application application, String appKey, String appSecret, BYNInitCallBack bynInitCallBack) {
+        if (TextUtils.isEmpty(appKey)) {
+            bynInitCallBack.onFailure(10001, "appKey为空");
+            return;
+        } else {
+            this.appKey = appKey;
+        }
+        if (TextUtils.isEmpty(appSecret)) {
+            bynInitCallBack.onFailure(10001, "appSecret为空");
+            return;
+        } else {
+            this.appSecret = appSecret;
+        }
+        this.context = application;
+        pkg = Utils.getAppPkg(Binder.getCallingPid(), application);
         NetWorkManager.getInstance().init();
-        AlibcTradeSDK.asyncInit(context, alibcTradeInitCallback);
+        AlibcTradeSDK.asyncInit(application, new AlibcTradeInitCallback() {
+            @Override
+            public void onSuccess() {
+                bynInitCallBack.onSuccess();
+            }
+
+            @Override
+            public void onFailure(int i, String s) {
+                bynInitCallBack.onFailure(10001, s);
+            }
+        });
         AutoSizeConfig.getInstance().getUnitsManager()
                 .setSupportDP(false)
                 .setSupportSP(false)
                 .setSupportSubunits(Subunits.MM);
+    }
+
+    public interface BYNInitCallBack {
+        void onSuccess();
+
+        void onFailure(int code, String message);
     }
 
 }

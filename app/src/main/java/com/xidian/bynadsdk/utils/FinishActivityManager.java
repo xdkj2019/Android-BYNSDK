@@ -115,6 +115,24 @@ public class FinishActivityManager extends BYNBaseActivity {
             }
         }
     }
+
+    public boolean isHaveActivity(Class<?> cls){
+        if (mActivityStack != null) {
+            for (Iterator<WeakReference<Activity>> it = mActivityStack.iterator(); it.hasNext(); ){
+                WeakReference<Activity> activityReference = it.next();
+                Activity activity = activityReference.get();
+                // 清理掉已经释放的activity
+                if (activity == null) {
+                    it.remove();
+                    continue;
+                }
+                if (activity.getClass().equals(cls)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
     /**
      * 结束所有Activity
      */

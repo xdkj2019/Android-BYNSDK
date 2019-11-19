@@ -4,7 +4,7 @@ package com.xidian.bynadsdk.bean;
  * Created by Administrator on 2019/11/10.
  */
 
-public class GoodsDetailBean {
+public class BYNAdSDKGoodsDetailBean {
 
     /**
      * item_id :
@@ -54,6 +54,15 @@ public class GoodsDetailBean {
     private String presale_tail_start_time;
     private String tag;
     private String discount_text;
+    private int goods_status;
+
+    public int getGoods_status() {
+        return goods_status;
+    }
+
+    public void setGoods_status(int goods_status) {
+        this.goods_status = goods_status;
+    }
 
     public String getDiscount_text() {
         return discount_text;

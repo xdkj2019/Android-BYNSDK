@@ -21,28 +21,26 @@ public class CustomException {
     /**
      * 未知错误
      */
-    public static final int UNKNOWN = 1000;
+    public static final int UNKNOWN = 10000;
 
     /**
      * 解析错误
      */
-    public static final int PARSE_ERROR = 1001;
+    public static final int PARSE_ERROR = 10003;
 
     /**
      * 网络错误
      */
-    public static final int NETWORK_ERROR = 1002;
+    public static final int NETWORK_ERROR = 10004;
 
-    /**
-     * 协议错误
-     */
-    public static final int HTTP_ERROR = 1003;
 
     public static ApiException handleException(Throwable e) {
         ApiException ex;
         if (e instanceof JsonParseException
                 || e instanceof JSONException
-                || e instanceof ParseException) {
+                || e instanceof ParseException
+                || e instanceof NullPointerException
+                || e instanceof NumberFormatException) {
             //解析错误
             ex = new ApiException(PARSE_ERROR, e.getMessage());
             return ex;
@@ -54,8 +52,7 @@ public class CustomException {
             //连接错误
             ex = new ApiException(NETWORK_ERROR, e.getMessage());
             return ex;
-        } 
-        else {
+        } else {
             //未知错误
             ex = new ApiException(UNKNOWN, e.getMessage());
             return ex;

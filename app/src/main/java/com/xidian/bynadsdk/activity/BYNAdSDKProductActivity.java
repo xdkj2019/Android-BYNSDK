@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.text.TextUtils;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebChromeClient;
@@ -36,9 +37,9 @@ import com.xidian.bynadsdk.utils.ImageCycleView;
 import com.xidian.bynadsdk.utils.StatusBarUtil;
 import com.xidian.bynadsdk.utils.Utils;
 import com.xidian.bynadsdk.adapterholder.BYNAdSDKSimarGoodsAdapter;
-import com.xidian.bynadsdk.bean.GoodsDetailBean;
-import com.xidian.bynadsdk.bean.GoodsSingleDetailBean;
-import com.xidian.bynadsdk.bean.GoodsTopBean;
+import com.xidian.bynadsdk.bean.BYNAdSDKGoodsDetailBean;
+import com.xidian.bynadsdk.bean.BYNAdSDKGoodsSingleDetailBean;
+import com.xidian.bynadsdk.bean.BYNAdSDKGoodsTopBean;
 import com.xidian.bynadsdk.network.NetWorkManager;
 import com.xidian.bynadsdk.network.response.ResponseTransformer;
 import com.xidian.bynadsdk.network.schedulers.SchedulerProvider;
@@ -69,7 +70,7 @@ public class BYNAdSDKProductActivity extends BYNBaseActivity {
     private String item_id;
     private String activity_id;
     private WebView webView;
-    private GoodsSingleDetailBean detailBean;
+    private BYNAdSDKGoodsSingleDetailBean detailBean;
     private ImageCycleView.ImageCycleViewListener mAdCycleViewListener = new ImageCycleView.ImageCycleViewListener() {
 
         @Override
@@ -109,7 +110,7 @@ public class BYNAdSDKProductActivity extends BYNBaseActivity {
         CompositeDisposable mDisposable = new CompositeDisposable();
         HashMap<String, Object> hashMap = new HashMap<>();
         hashMap.put("t", l+"");
-        hashMap.put("sign", Utils.md5Decode32(Utils.getVersion()+ BYNAdSDK.getInstance().appSecret+l+BYNAdSDK.getInstance().appSecret));
+        hashMap.put("sign", Utils.md5Decode32( BYNAdSDK.getInstance().appSecret+"appkey="+BYNAdSDK.getInstance().appKey+"tm="+l+BYNAdSDK.getInstance().appSecret));
         HashMap<String, Object> map = new HashMap<String, Object>();
         map.put("item_id",item_id);
         if(!TextUtils.isEmpty(activity_id)){
@@ -118,9 +119,9 @@ public class BYNAdSDKProductActivity extends BYNBaseActivity {
         Disposable subscribe = NetWorkManager.getRequest().goodsdetail(hashMap, map)
                 .compose(ResponseTransformer.handleResult())
                 .compose(SchedulerProvider.getInstance().applySchedulers())
-                .subscribe(new Consumer<GoodsSingleDetailBean>() {
+                .subscribe(new Consumer<BYNAdSDKGoodsSingleDetailBean>() {
                     @Override
-                    public void accept(GoodsSingleDetailBean goodsSingleDetailBean) throws Exception {
+                    public void accept(BYNAdSDKGoodsSingleDetailBean goodsSingleDetailBean) throws Exception {
                         detailBean=goodsSingleDetailBean;
                         if (goodsSingleDetailBean.getImages()!= null) {
                             ArrayList<ADInfo> infos = new ArrayList<ADInfo>();
@@ -203,7 +204,6 @@ public class BYNAdSDKProductActivity extends BYNBaseActivity {
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
-                        Utils.toast(throwable.getMessage());
                     }
                 });
 
@@ -213,9 +213,9 @@ public class BYNAdSDKProductActivity extends BYNBaseActivity {
         Disposable subscribesimilar = NetWorkManager.getRequest().goodssimilar(hashMap, map)
                 .compose(ResponseTransformer.handleResult())
                 .compose(SchedulerProvider.getInstance().applySchedulers())
-                .subscribe(new Consumer<GoodsTopBean>() {
+                .subscribe(new Consumer<BYNAdSDKGoodsTopBean>() {
                     @Override
-                    public void accept(GoodsTopBean goodsTopBean) throws Exception {
+                    public void accept(BYNAdSDKGoodsTopBean goodsTopBean) throws Exception {
                         if(goodsTopBean.getItems()!=null&&goodsTopBean.getItems().size()>0){
                             goodsSimilarLayout.setVisibility(View.VISIBLE);
                             fourthSegmentation.setVisibility(View.VISIBLE);
@@ -229,7 +229,7 @@ public class BYNAdSDKProductActivity extends BYNBaseActivity {
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
-                        Utils.toast(throwable.getMessage());
+
                     }
                 });
 
@@ -240,7 +240,12 @@ public class BYNAdSDKProductActivity extends BYNBaseActivity {
         backActivityLL.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FinishActivityManager.getsManager().finishActivity();
+                if(FinishActivityManager.getsManager().isHaveActivity(BYNAdSDKHomeActivity.class)){
+                    FinishActivityManager.getsManager().finishActivity();
+                }else{
+                    FinishActivityManager.getsManager().finishAllActivity();
+                    startActivity(new Intent(BYNAdSDKProductActivity.this, BYNAdSDKHomeActivity.class));
+                }
             }
         });
         finishAllActivityTV.setOnClickListener(new View.OnClickListener() {
@@ -298,11 +303,11 @@ public class BYNAdSDKProductActivity extends BYNBaseActivity {
         simarGoodsAdapter.setOnItemClickListener(new RecyclerArrayAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                GoodsDetailBean goodsDetailBean= (GoodsDetailBean) simarGoodsAdapter.getItem(position);
+                BYNAdSDKGoodsDetailBean bynAdSDKGoodsDetailBean = (BYNAdSDKGoodsDetailBean) simarGoodsAdapter.getItem(position);
                 // FinishActivityManager.getsManager().finishActivity();
                 startActivity(new Intent(BYNAdSDKProductActivity.this,BYNAdSDKProductActivity.class)
-                        .putExtra("item_id",goodsDetailBean.getItem_id())
-                        .putExtra("activity_id",goodsDetailBean.getActivity_id()));
+                        .putExtra("item_id", bynAdSDKGoodsDetailBean.getItem_id())
+                        .putExtra("activity_id", bynAdSDKGoodsDetailBean.getActivity_id()));
 
 
             }
@@ -311,7 +316,20 @@ public class BYNAdSDKProductActivity extends BYNBaseActivity {
     public void auth(String url){
         // TODO: 2019/11/11 缺少授权转链,是否需要判断商品类型（拼多多或者淘宝）
     }
-
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(keyCode == KeyEvent.KEYCODE_BACK){
+            if(FinishActivityManager.getsManager().isHaveActivity(BYNAdSDKHomeActivity.class)){
+                FinishActivityManager.getsManager().finishActivity();
+                return true;
+            }else{
+                FinishActivityManager.getsManager().finishAllActivity();
+                startActivity(new Intent(BYNAdSDKProductActivity.this, BYNAdSDKHomeActivity.class));
+                return true;
+            }
+        }
+        return super.onKeyDown(keyCode, event);
+    }
     public void buyOrReceive(String url){
         AlibcShowParams showParams = new AlibcShowParams();
         showParams.setOpenType(OpenType.Native);

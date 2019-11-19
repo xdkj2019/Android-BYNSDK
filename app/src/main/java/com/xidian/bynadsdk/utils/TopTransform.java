@@ -32,10 +32,7 @@ public class TopTransform implements Transformation<Bitmap> {
         Bitmap source = resource.get();
         mWidth = source.getWidth();
         mHeight = mWidth * Utils.getScreenHeight(context) / Utils.getScreenWidth(context);//图片满屏时的高度
-
-       // mHeight = (int) (heightPercentage*mHeight);
-
-
+        mHeight = (int) (heightPercentage*mHeight/1000);
         if(mHeight>source.getHeight()){
             mHeight=source.getHeight();
         }

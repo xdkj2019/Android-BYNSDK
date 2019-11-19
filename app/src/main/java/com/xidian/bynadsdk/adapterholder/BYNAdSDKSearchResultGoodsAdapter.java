@@ -11,14 +11,14 @@ import android.widget.TextView;
 import com.jude.easyrecyclerview.adapter.BaseViewHolder;
 import com.xidian.bynadsdk.R;
 import com.xidian.bynadsdk.utils.Utils;
-import com.xidian.bynadsdk.bean.GoodsDetailBean;
+import com.xidian.bynadsdk.bean.BYNAdSDKGoodsDetailBean;
 
 
 /**
  * Created by Administrator on 2019/11/7.
  */
 
-public class BYNAdSDKSearchResultGoodsAdapter extends BaseViewHolder<GoodsDetailBean> {
+public class BYNAdSDKSearchResultGoodsAdapter extends BaseViewHolder<BYNAdSDKGoodsDetailBean> {
     private ImageView image;
     private ImageView iconIv;
     private TextView titleTv;
@@ -46,7 +46,7 @@ public class BYNAdSDKSearchResultGoodsAdapter extends BaseViewHolder<GoodsDetail
         vouchersLL=(LinearLayout)$(R.id.bynad_sdksearch_result_goods_item_vouchers_layout);
     }
     @Override
-    public void setData(GoodsDetailBean data) {
+    public void setData(BYNAdSDKGoodsDetailBean data) {
         super.setData(data);
         originalPriceTv.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
         titleTv.getPaint().setFakeBoldText(true);

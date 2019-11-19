@@ -68,7 +68,9 @@ public class Utils {
                 }
             }
         }
-        return processName;
+        // TODO: 2019/11/19 暂时改为测试
+        return "android_package_name";
+       // return processName;
     }
     public static boolean isPackageExist(Context context,String pkgName){
         boolean isExist = false;

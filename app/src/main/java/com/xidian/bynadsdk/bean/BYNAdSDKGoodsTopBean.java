@@ -6,16 +6,16 @@ import java.util.List;
  * Created by Administrator on 2019/11/10.
  */
 
-public class GoodsTopBean {
-    private List<GoodsDetailBean> items;
+public class BYNAdSDKGoodsTopBean {
+    private List<BYNAdSDKGoodsDetailBean> items;
     private boolean has_next;
     private String top_update_time;
 
-    public List<GoodsDetailBean> getItems() {
+    public List<BYNAdSDKGoodsDetailBean> getItems() {
         return items;
     }
 
-    public void setItems(List<GoodsDetailBean> items) {
+    public void setItems(List<BYNAdSDKGoodsDetailBean> items) {
         this.items = items;
     }
 
