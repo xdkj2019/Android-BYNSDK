@@ -57,7 +57,7 @@ public class BYNAdSDK {
 
             @Override
             public void onFailure(int i, String s) {
-                bynInitCallBack.onFailure(10001, s);
+                bynInitCallBack.onFailure(i, s);
             }
         });
         AutoSizeConfig.getInstance().getUnitsManager()

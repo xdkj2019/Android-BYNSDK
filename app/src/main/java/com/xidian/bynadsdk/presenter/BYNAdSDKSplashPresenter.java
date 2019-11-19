@@ -122,8 +122,13 @@ public class BYNAdSDKSplashPresenter implements BYNAdNative {
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
-                        ApiException apiException = (ApiException) throwable;
-                        onSplashADListener.onError(apiException.getCode(), apiException.getDisplayMessage());
+                        try {
+                            ApiException apiException = (ApiException) throwable;
+                            onSplashADListener.onError(apiException.getCode(), apiException.getDisplayMessage());
+                        }catch (Exception e){
+                            onSplashADListener.onError(10000, throwable.getMessage());
+                        }
+
                     }
                 });
         mDisposable.add(subscribe);
