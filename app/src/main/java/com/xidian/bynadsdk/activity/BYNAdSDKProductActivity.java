@@ -140,6 +140,13 @@ public class BYNAdSDKProductActivity extends BYNBaseActivity {
                                 goodsImages.pushImageCycle();
                             }
                             goodsImages.setImageResources(infos, mAdCycleViewListener, Gravity.CENTER);
+                        }else{
+                            ArrayList<ADInfo> infos = new ArrayList<ADInfo>();
+                            ADInfo info = new ADInfo();
+                            info.setUrl(goodsSingleDetailBean.getCover_image());
+                            infos.add(info);
+                            goodsImages.pushImageCycle();
+                            goodsImages.setImageResources(infos, mAdCycleViewListener, Gravity.CENTER);
                         }
                         Utils.setRoundedAndCropImage(BYNAdSDKProductActivity.this,goodsSingleDetailBean.getMall_icon(),0,mallIconIV);
                         Utils.setRoundedAndCropImage(BYNAdSDKProductActivity.this,goodsSingleDetailBean.getShop_image(),4,shopIconIV);

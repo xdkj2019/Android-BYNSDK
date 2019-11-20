@@ -282,6 +282,7 @@
                     android:layout_height="55dp" />
 
                 <TextView
+                    android:layout_marginLeft="10dp"
                     android:id="@+id/activity_bynad_sdkproduct_shop_name_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -293,7 +294,7 @@
                     android:textSize="15sp" />
 
                 <LinearLayout
-
+                    android:layout_marginLeft="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/activity_bynad_sdkproduct_shop_name_tv"

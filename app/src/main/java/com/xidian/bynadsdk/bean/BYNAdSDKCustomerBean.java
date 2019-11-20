@@ -8,4 +8,5 @@ import retrofit2.http.PUT;
 
 public class BYNAdSDKCustomerBean {
     public static String DEVICEVALUE="";
+    public static String DEVICETYPE="";
 }

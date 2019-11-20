@@ -151,5 +151,11 @@ public class BYNAdSDKHomeActivity extends BYNBaseActivity {
                         .putExtra("item_id", bynAdSDKGoodsDetailBean.getItem_id())
                         .putExtra("activity_id", bynAdSDKGoodsDetailBean.getActivity_id()));            }
         });
+        getMoreTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(BYNAdSDKHomeActivity.this,BYNAdSDKGoodsMoreActivity.class));
+            }
+        });
     }
 }

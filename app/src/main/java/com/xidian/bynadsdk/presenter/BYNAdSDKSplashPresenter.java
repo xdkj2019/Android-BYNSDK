@@ -56,6 +56,7 @@ public class BYNAdSDKSplashPresenter implements BYNAdNative {
         map.put("adzone_id", var1.getAdzone_id());
         if (var1 != null && !TextUtils.isEmpty(var1.getDevice_type())) {
             map.put("device_type", var1.getDevice_type());
+            BYNAdSDKCustomerBean.DEVICETYPE=var1.getDevice_type();
         }
         if (var1 != null && !TextUtils.isEmpty(var1.getDevice_value())) {
             map.put("device_value", var1.getDevice_value());

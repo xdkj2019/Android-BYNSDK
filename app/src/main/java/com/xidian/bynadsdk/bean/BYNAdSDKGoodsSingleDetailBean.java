@@ -51,7 +51,7 @@ public class BYNAdSDKGoodsSingleDetailBean {
     private String cover_image;
     private int mall_id;
     private int activity_type;
-    private int tk_rate;
+    private String tk_rate;
     private String shop_name;
     private DsrInfoBean dsr_info;
     private String tkl;
@@ -150,11 +150,11 @@ public class BYNAdSDKGoodsSingleDetailBean {
         this.activity_type = activity_type;
     }
 
-    public int getTk_rate() {
+    public String getTk_rate() {
         return tk_rate;
     }
 
-    public void setTk_rate(int tk_rate) {
+    public void setTk_rate(String tk_rate) {
         this.tk_rate = tk_rate;
     }
 
