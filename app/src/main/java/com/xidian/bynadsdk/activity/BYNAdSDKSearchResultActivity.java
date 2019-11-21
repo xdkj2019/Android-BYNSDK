@@ -123,7 +123,7 @@ public class BYNAdSDKSearchResultActivity extends BYNBaseActivity implements Vie
             map.put("end_price", end_price);
         }
         map.put("has_coupon", has_coupon);
-
+        map.put("keyword",key);
         Disposable subscribe = NetWorkManager.getRequest().goodssearch(hashMap, map)
                 .compose(ResponseTransformer.handleResult())
                 .compose(SchedulerProvider.getInstance().applySchedulers())

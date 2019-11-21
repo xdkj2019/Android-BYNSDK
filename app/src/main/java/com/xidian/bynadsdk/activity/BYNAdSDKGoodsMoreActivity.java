@@ -19,6 +19,10 @@ import com.xidian.bynadsdk.R;
 import com.xidian.bynadsdk.adapterholder.BYNAdSDKSearchResultGoodsAdapter;
 import com.xidian.bynadsdk.bean.BYNAdSDKCustomerBean;
 import com.xidian.bynadsdk.bean.BYNAdSDKGoodsDetailBean;
+import com.xidian.bynadsdk.bean.BYNAdSDKGoodsTopBean;
+import com.xidian.bynadsdk.network.NetWorkManager;
+import com.xidian.bynadsdk.network.response.ResponseTransformer;
+import com.xidian.bynadsdk.network.schedulers.SchedulerProvider;
 import com.xidian.bynadsdk.utils.FinishActivityManager;
 import com.xidian.bynadsdk.utils.PullListener;
 import com.xidian.bynadsdk.utils.StatusBarUtil;
@@ -27,6 +31,8 @@ import com.xidian.bynadsdk.utils.Utils;
 import java.util.HashMap;
 
 import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
 
 public class BYNAdSDKGoodsMoreActivity extends AppCompatActivity {
     public RecyclerArrayAdapter goodsAdapter = new RecyclerArrayAdapter(this) {
@@ -108,7 +114,69 @@ public class BYNAdSDKGoodsMoreActivity extends AppCompatActivity {
         map.put("page", num);
         map.put("page_size", "20");
         if(!TextUtils.isEmpty(BYNAdSDKCustomerBean.DEVICEVALUE)){
-
+            map.put("device_value",BYNAdSDKCustomerBean.DEVICEVALUE);
+            map.put("device_type",BYNAdSDKCustomerBean.DEVICETYPE);
+            Disposable subscribe = NetWorkManager.getRequest().goodstopmore(hashMap, map)
+                    .compose(ResponseTransformer.handleResult())
+                    .compose(SchedulerProvider.getInstance().applySchedulers())
+                    .subscribe(new Consumer<BYNAdSDKGoodsTopBean>() {
+                        @Override
+                        public void accept(BYNAdSDKGoodsTopBean goodsTopBean) throws Exception {
+                            recyclerView.setRefreshing(false);
+                            if (num == 1) {
+                                if (goodsAdapter != null) {
+                                    goodsAdapter.clear();
+                                }
+                            }
+                            if(goodsTopBean.getItems()==null||goodsTopBean.getItems().size()==0){
+                                goodsAdapter.stopMore();
+                            }else{
+                                num=num+1;
+                                goodsAdapter.addAll(goodsTopBean.getItems());
+                                goodsAdapter.notifyDataSetChanged();
+                                if(!goodsTopBean.isHas_next()){
+                                    goodsAdapter.stopMore();
+                                }
+                            }
+                        }
+                    }, new Consumer<Throwable>() {
+                        @Override
+                        public void accept(Throwable throwable) throws Exception {
+                            recyclerView.setRefreshing(false);
+                        }
+                    });
+            mDisposable.add(subscribe);
+        }else{
+            Disposable subscribe = NetWorkManager.getRequest().goodstopmore(hashMap, map)
+                    .compose(ResponseTransformer.handleResult())
+                    .compose(SchedulerProvider.getInstance().applySchedulers())
+                    .subscribe(new Consumer<BYNAdSDKGoodsTopBean>() {
+                        @Override
+                        public void accept(BYNAdSDKGoodsTopBean goodsTopBean) throws Exception {
+                            recyclerView.setRefreshing(false);
+                            if (num == 1) {
+                                if (goodsAdapter != null) {
+                                    goodsAdapter.clear();
+                                }
+                            }
+                            if(goodsTopBean.getItems()==null||goodsTopBean.getItems().size()==0){
+                                goodsAdapter.stopMore();
+                            }else{
+                                num=num+1;
+                                goodsAdapter.addAll(goodsTopBean.getItems());
+                                goodsAdapter.notifyDataSetChanged();
+                                if(!goodsTopBean.isHas_next()){
+                                    goodsAdapter.stopMore();
+                                }
+                            }
+                        }
+                    }, new Consumer<Throwable>() {
+                        @Override
+                        public void accept(Throwable throwable) throws Exception {
+                            recyclerView.setRefreshing(false);
+                        }
+                    });
+            mDisposable.add(subscribe);
         }
     }
 }

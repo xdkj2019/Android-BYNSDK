@@ -1,6 +1,7 @@
 package com.xidian.bynadsdk.network.Exception;
 
 import android.net.ParseException;
+import android.util.Log;
 
 import com.google.gson.JsonParseException;
 
@@ -43,18 +44,23 @@ public class CustomException {
                 || e instanceof NumberFormatException) {
             //解析错误
             ex = new ApiException(PARSE_ERROR, e.getMessage());
+            Log.e("BYNSDKNetError","错误码:"+PARSE_ERROR+"；错误信息："+e.getMessage());
             return ex;
         } else if (e instanceof ConnectException) {
             //网络错误
             ex = new ApiException(NETWORK_ERROR, e.getMessage());
+            Log.e("BYNSDKNetError","错误码:"+NETWORK_ERROR+"；错误信息："+e.getMessage());
             return ex;
         } else if (e instanceof UnknownHostException || e instanceof SocketTimeoutException) {
+
             //连接错误
             ex = new ApiException(NETWORK_ERROR, e.getMessage());
+            Log.e("BYNSDKNetError","错误码:"+NETWORK_ERROR+"；错误信息："+e.getMessage());
             return ex;
         } else {
             //未知错误
             ex = new ApiException(UNKNOWN, e.getMessage());
+            Log.e("BYNSDKNetError","错误码:"+UNKNOWN+"；错误信息："+e.getMessage());
             return ex;
         }
     }

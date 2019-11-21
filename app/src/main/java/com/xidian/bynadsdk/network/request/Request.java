@@ -21,7 +21,8 @@ import retrofit2.http.QueryMap;
 public interface Request {
 
     public static String HOST = "http://sdk.test.daff9.cn";
-   // public static String HOST = "http://sdk.biyingniao.com";
+
+    // public static String HOST = "http://sdk.biyingniao.com";
     @GET("/api/opensdk/ads")
     Observable<Response<BYNAdSDKADSBean>> getads(@HeaderMap HashMap<String, Object> hashMap, @QueryMap HashMap<String, Object> map);
 
@@ -37,5 +38,7 @@ public interface Request {
     @GET("/api/opensdk/goods/similar")
     Observable<Response<BYNAdSDKGoodsTopBean>> goodssimilar(@HeaderMap HashMap<String, Object> hashMap, @QueryMap HashMap<String, Object> map);
 
+    @GET("/api/opensdk/goods/top")
+    Observable<Response<BYNAdSDKGoodsTopBean>> goodstopmore(@HeaderMap HashMap<String, Object> hashMap, @QueryMap HashMap<String, Object> map);
 
 }

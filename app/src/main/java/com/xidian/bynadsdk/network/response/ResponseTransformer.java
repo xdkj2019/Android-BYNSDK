@@ -52,14 +52,21 @@ public class ResponseTransformer {
         public ObservableSource<T> apply(Response<T> tResponse) throws Exception {
             int code = tResponse.getCode();
             String message = tResponse.getMessage();
+
             if (code == 0) {
                 return Observable.just(tResponse.getData());
             }else if(code==20209){
+                Log.e("BYNSDKNetError","错误码:20001；错误信息："+message);
                 return Observable.error(new ApiException(20001, message));
             }else if(code==20215){
+                Log.e("BYNSDKNetError","错误码:20004；错误信息："+message);
                 return Observable.error(new ApiException(20004, message));
             }else if(code==20216){
+                Log.e("BYNSDKNetError","错误码:20002；错误信息："+message);
                 return Observable.error(new ApiException(20002, message));
+            }else if(code==20217){
+                Log.e("BYNSDKNetError","错误码:20003；错误信息："+message);
+                return Observable.error(new ApiException(20003, message));
             }
             else {
                 Log.e("BYNSDKNetError","错误码:"+code+"；错误信息："+message);

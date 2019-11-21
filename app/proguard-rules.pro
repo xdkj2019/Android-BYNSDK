@@ -180,6 +180,10 @@
     <methods>;
 }
 
+#适配布局jessyan:autosize
+ -keep class me.jessyan.autosize.** { *; }
+ -keep interface me.jessyan.autosize.** { *; }
+
 #（可选）避免Log打印输出
 -assumenosideeffects class android.util.Log {
    public static *** v(...);
